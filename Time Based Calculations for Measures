@@ -1,0 +1,57 @@
+-- Time Based Calculations for Measures
+
+foreach ( var m in Selected.Measures)
+
+{
+    var datecolumn = "Calendar[Date]";
+    
+    m.Table.AddMeasure(
+    "LY" + m.Name,
+    "CALCULATE(" + m.DaxObjectName + "," +
+    "SAMEPERIODLASTYEAR(" + datecolumn +"))"
+    );
+    
+    m.Table.AddMeasure(
+    "PD" + m.Name,
+    "CALCULATE(" + m.DaxObjectName + "," +
+    "DATEADD(" + datecolumn +", -1, DAY))"
+    );
+    
+    m.Table.AddMeasure(
+    "PM" + m.Name,
+    "CALCULATE(" + m.DaxObjectName + "," +
+    "DATEADD(" + datecolumn +", -1, MONTH))"
+    );
+    
+     m.Table.AddMeasure(
+     "PQ" + m.Name,
+    "CALCULATE(" + m.DaxObjectName + "," +
+    "DATEADD(" + datecolumn +", -1, QUARTER))"
+    );
+    
+     m.Table.AddMeasure(
+     "PY" + m.Name,
+    "CALCULATE(" + m.DaxObjectName + "," +
+    "DATESMTD(" + datecolumn +", -1, YEAR))"
+    );
+    
+     m.Table.AddMeasure(
+     "MTD" + m.Name,
+    "CALCULATE(" + m.DaxObjectName + "," +
+    "DATESMTD(" + datecolumn +"))"
+    );
+    
+    m.Table.AddMeasure(
+    "QTD" + m.Name,
+    "CALCULATE(" + m.DaxObjectName + "," +
+    "DATESQTD(" + datecolumn +"))"
+    );
+    
+    m.Table.AddMeasure(
+    "YTD" + m.Name,
+    "CALCULATE(" + m.DaxObjectName + "," +
+    "DATESYTD(" + datecolumn +"))"
+    );
+    
+    
+}
