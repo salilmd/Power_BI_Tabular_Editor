@@ -1,6 +1,11 @@
 -- Time Based Calculations for Measures
+-- Select the Measure already defined
+-- From Power BI Desktop select External tools and Tabular Editor
+-- In Advanced Scripting paste the code below and run
+-- Power BI Measure like CALCULATE(Sales[Total Sales], KEEPFILTERS(FILTER(ALL(Products[Category]), Products[Category] = "Bikes"))) will be created
+-- The above code is for Measure [Total Sales] for Products Category = "Bikes"
 
-foreach ( var m in Selected.Measures)
+for each ( var m in Selected.Measures)
 
 {
     var datecolumn = "Calendar[Date]";
